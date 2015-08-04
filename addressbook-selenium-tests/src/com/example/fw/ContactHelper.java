@@ -32,11 +32,33 @@ public class ContactHelper extends HelperBase {
 	}
 
 	public void submitContactCreation() {
-		driver.findElement(By.name("submit")).click();
+		click(By.name("submit"));
 	}
 
 	public void returnToHomePage() {
 		click(By.linkText("home page"));
 	}
+	
+	private void selectContactByIndex(int index) {
+		click(By.xpath("//table/tbody/tr[" + index + "]/td[1]/input"));
+	}
 
+	public void initContactModification(int index) {
+		selectContactByIndex(index);
+		selectActionByIndex(index);
+		}
+
+	private void selectActionByIndex(int index) {
+		click(By.xpath("//table/tbody/tr[" + index + "]/td[7]/a/img"));
+	}
+	
+	public void submitContactModification() {
+		click(By.xpath("//input[11]"));
+	}
+
+	public void deleteContact(int index) {
+		selectContactByIndex(index);
+		selectActionByIndex(index);
+		click(By.xpath("//input[2]"));
+	}
 }

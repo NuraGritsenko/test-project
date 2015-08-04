@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.Select;
 
 public abstract class HelperBase {
 
-	private ApplicationManager manager;
+	protected ApplicationManager manager;
 	protected WebDriver driver;
 	public boolean acceptNextAlert = true;
 	
@@ -52,8 +52,10 @@ public abstract class HelperBase {
 	  }
 
 	protected void type(By locator, String text) {
+		if (text != null) {
 		driver.findElement(locator).clear();
-		driver.findElement(locator).sendKeys(text);
+		driver.findElement(locator).sendKeys(text);	
+		}
 	}
 
 	protected void click(By locator) {
