@@ -8,14 +8,15 @@ import static org.testng.Assert.assertEquals;
 
 public class GroupCreationTests extends TestBase {
 	
-	// save old state
-	List<GroupData> oldList = app.getGroupHelper().getGroups();
-	
-	// actions
   @Test
   public void testNonEmptyGroupCreation() throws Exception {
 	app.getNavigationHelper().openMainPage();
     app.getNavigationHelper().goToGroupsPage();
+    
+    // save old state
+ 	List<GroupData> oldList = app.getGroupHelper().getGroups();
+    
+    // actions
     app.getGroupHelper().initGroupCreation();
     GroupData group = new GroupData();
     group.name = "group name 1";
